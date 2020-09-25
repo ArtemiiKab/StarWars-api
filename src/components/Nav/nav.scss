@@ -1,0 +1,19 @@
+.Nav {
+  &__container {
+    display: flex;
+    align-items: center;
+    background-color: black;
+    
+    list-style: none;
+    & li a {
+      display:block;
+      color:white;
+      padding:25px;
+      cursor:pointer
+    }
+
+    & li a:hover {
+      color:yellow;
+    }
+  };
+}

@@ -1,24 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
+import React,{useState, useEffect} from 'react';
+import Nav from './components/Nav';
+
+
 import './App.css';
 
 function App() {
+  const [starships, setStarships] = useState([]);
+  
+  useEffect(()=>{
+    function fetchStarShips(){
+      fetch("https://swapi.dev/api/starships/")
+        .then(res=>res.json())
+        .then(res=>setStarships(res.results));
+    }
+
+    fetchStarShips()
+  }, [])
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Nav starships={starships} />
     </div>
   );
 }
